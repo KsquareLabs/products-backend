@@ -12,12 +12,21 @@ var interface = {
                 res.status(400).send(err);
             });
     },
+    getOne: function(req,res,next){
+      var id = req.params.id;
+        Product.findOne({_id:id})
+            .then(function(product){
+                res.send(product)
+            })
+            .catch(function(err){
+                res.status(400).send(err);
+            });
+    },
     save: function(req,res,next){
         var id = req.params.id;
         if(!id) {
             id=new mongoose.mongo.ObjectID()
         }
-        console.log(id);
         Product.findOneAndUpdate({_id:id},req.body,{upsert:true,new:true})
             .then(function(products){
                 console.log(products)

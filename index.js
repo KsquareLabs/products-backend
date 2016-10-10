@@ -1,8 +1,6 @@
 var express = require("express");
 var mongoose = require("mongoose");
 var product = require("./server/product");
-var order = require("./server/order");
-var user = require("./server/user");
 var morgan = require('morgan');
 var bodyParser = require('body-parser');
 
@@ -23,8 +21,6 @@ app.use(bodyParser.urlencoded({'extended': 'true'}));
 app.use(bodyParser.json());
 //Routers
 app.use("/products", product);
-app.use("/orders", order);
-app.use("/users", user);
 //Default Router
 app.get('/',function(req,res,next){
     res.sendFile(__dirname+"/client"+"/index.html");

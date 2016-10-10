@@ -9,8 +9,9 @@ require("./seed");
 
 
 router.get("/",controller.getList);
-router.post("/:id",controller.save);
 router.post("/",controller.save);
+router.get("/:id",controller.getOne);
+router.put("/:id",controller.save);
 router.delete("/:id",controller.delete);
 
 module.exports = router;
